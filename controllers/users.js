@@ -113,7 +113,7 @@ exports.loginUser = async (req, res, next) => {
   try {
     comparePassword = await bcrypt.compare(password, isExistedUser.password);
   } catch (error) {
-    return next(new HTTPError(error, 404));
+    return next(new HTTPError(error, 422));
   }
 
   if (!comparePassword) {
